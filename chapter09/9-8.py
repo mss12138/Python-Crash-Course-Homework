@@ -19,15 +19,6 @@ class User():
     def greet_user(self):
         print("\nWelcome back, " + self.username + "!")
 
-class Admin(User):
-    def __init__(self, first_name, last_name, username, email, location):
-        super().__init__(first_name, last_name, username, email, location)
-        self.privileges = []
-    
-    def show_privileges(self):
-        for privilege in self.privileges:
-            print("- " + privilege)
-
 class Privileges():
 
     def __init__(self, privileges=[]):
@@ -41,6 +32,12 @@ class Privileges():
         else:
             print("- This user has no privileges.")
 
+class Admin(User):
+    def __init__(self, first_name, last_name, username, email, location):
+        super().__init__(first_name, last_name, username, email, location)
+        self.privileges = Privileges()
+
+        
 eric = Admin('eric', 'matthes', 'e_matthes', 'e_matthes@example.com', 'alaska')
 eric.describe_user()
 
